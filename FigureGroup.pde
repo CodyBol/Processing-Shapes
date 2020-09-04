@@ -1,8 +1,4 @@
-class FigureGroup {
-  Position position;
-  float rotation;
-  boolean component = false;
-  
+class FigureGroup extends Object {  
   FigureGroup(Position position, float rotate) {
     this.position = position;
     rotation = rotate;
@@ -15,7 +11,7 @@ class FigureGroup {
   }
   
   void reset() {
-    rotate(radians(0 - rotation));
     translate(0 - position.x, 0 - position.y);
+    rotate(radians(0 - rotation));
   }
 }

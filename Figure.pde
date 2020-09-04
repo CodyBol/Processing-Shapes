@@ -1,48 +1,41 @@
-class Figure {
-  Position position;
+class Figure extends Object {
   float heightFigure;
   float widthFigure;
   float strokeWeight;
-  float rotation;
-  
+
   int strokeCap = SQUARE;
   int strokeJoin = MITER;
   int anchor = CENTER;
-  
+
   color stroke;  
   color colorRGB;
-  
-  FigureGroup parent;
-  
+
   Figure(Position position, float widthFigure, float heightFigure) {
     this.position = position;
     this.heightFigure = heightFigure;
     this.widthFigure = widthFigure;
   }
-  
+
   protected void init()
-  {
-    if (colorRGB != 0) {
-      fill(colorRGB);
-    }
-    
-    if (stroke != 0) {
-      strokeWeight(strokeWeight);
-    } else {
-      noStroke();
-    }
-    
+  {  
+    fill(colorRGB);
+
     stroke(stroke);
     strokeCap(strokeCap);
     strokeJoin(strokeJoin);
+    strokeWeight(strokeWeight);
     
+    if (stroke == 0) {
+      noStroke();
+    }
+
     translate(position.x, position.y);
     rectMode(anchor);
     rotate(radians(rotation));
   }
-  
+
   void reset() {
-      rotate(radians(0 - rotation));
-      translate(0 - position.x, 0 - position.y);
+    rotate(radians(0 - rotation));
+    translate(0 - position.x, 0 - position.y);
   }
 }
